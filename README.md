@@ -1,50 +1,104 @@
-# Welcome to your Expo app 👋
+### 1. **Home (홈)**
+   - 메인 화면으로 이동
+   - 추천 상품, 인기 상품, 새로운 상품 등을 보여줌
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+### 2. **Categories (카테고리)**
+   - 상품을 카테고리별로 분류하여 보여줌
+   - 사용자에게 다양한 상품을 쉽게 찾을 수 있도록 함
 
-## Get started
+### 3. **Search (검색)**
+   - 상품 검색 기능 제공
+   - 키워드로 상품을 검색하고 필터링할 수 있는 기능 포함
 
-1. Install dependencies
+### 4. **Cart (장바구니)**
+   - 사용자가 담은 상품들을 확인하고 관리할 수 있는 장바구니 화면
+   - 수량 변경, 상품 삭제, 총 가격 확인 등의 기능 제공
 
-   ```bash
-   npm install
-   ```
+### 5. **Orders (주문내역)**
+   - 사용자가 지금까지 주문한 내역을 확인할 수 있는 화면
+   - 주문 상세 정보, 배송 상태 등을 확인할 수 있음
 
-2. Start the app
+### 6. **Profile (프로필)**
+   - 사용자 계정 관리 화면
+   - 개인 정보 수정, 비밀번호 변경, 배송지 관리 등의 기능 제공
 
-   ```bash
-    npx expo start
-   ```
+### 7. **Wishlist (위시리스트)**
+   - 사용자가 마음에 들어하는 상품을 저장해 둘 수 있는 목록
+   - 나중에 구매하고자 하는 상품을 쉽게 찾을 수 있도록 함
 
-In the output, you'll find options to open the app in a
+### 8. **Notifications (알림)**
+   - 최신 알림, 프로모션, 할인 정보 등을 확인할 수 있는 화면
+   - 중요한 알림을 놓치지 않도록 함
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 9. **Customer Support (고객 지원)**
+   - 고객 지원 센터로 연결되는 화면
+   - FAQ, 문의하기, 채팅 지원 등의 기능 제공
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### 10. **Settings (설정)**
+   - 앱 설정 화면
+   - 알림 설정, 언어 설정, 테마 설정 등의 기능 제공
 
-## Get a fresh project
+### 메뉴바 구성 예시
 
-When you're ready, run:
+1. **Home (홈)**
+2. **Categories (카테고리)**
+3. **Search (검색)**
+4. **Cart (장바구니)**
+5. **Orders (주문내역)**
+6. **Profile (프로필)**
 
-```bash
-npm run reset-project
-```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+### 주제: 이커머스 플랫폼
 
-To learn more about developing your project with Expo, look at the following resources:
+#### 개요
+이커머스 플랫폼은 상품, 주문, 사용자, 결제 등을 관리하는 시스템입니다. 이 시스템은 다양한 기능을 마이크로서비스로 분리하여 개발하고, Spring Boot, GraphQL, gRPC를 활용하여 서비스 간의 통신을 원활하게 할 수 있습니다.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+#### 마이크로서비스 구성
+1. **사용자 관리 서비스(User Management Service)**
+   - 회원가입, 로그인, 프로필 관리 기능
+   - REST API로 기본적인 CRUD 작업을 제공
+   - gRPC를 사용하여 다른 서비스와 통신
 
-## Join the community
+2. **상품 관리 서비스(Product Management Service)**
+   - 상품 등록, 수정, 삭제, 조회 기능
+   - GraphQL을 사용하여 복잡한 쿼리를 효율적으로 처리
+   - gRPC를 통해 사용자 서비스와 통신하여 판매자 정보 조회
 
-Join our community of developers creating universal apps.
+3. **주문 관리 서비스(Order Management Service)**
+   - 주문 생성, 수정, 취소, 조회 기능
+   - REST API 및 gRPC를 사용하여 상품 서비스 및 사용자 서비스와 통신
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+4. **결제 서비스(Payment Service)**
+   - 결제 처리, 환불 관리 기능
+   - GraphQL을 통해 다양한 필터 및 정렬 기능 제공
+   - gRPC를 통해 주문 서비스와 통신
+
+5. **배송 서비스(Delivery Service)**
+   - 배송 추적, 상태 업데이트 기능
+   - 이벤트 기반으로 다른 서비스와 통신 (Kafka나 RabbitMQ 같은 메시지 브로커 사용 가능)
+
+#### 기술 스택
+- **Spring Boot**: 각 마이크로서비스의 기본 프레임워크로 사용
+- **GraphQL**: 상품 관리 및 결제 서비스에 사용하여 복잡한 데이터 쿼리 처리
+- **gRPC**: 서비스 간의 고성능, 저지연 통신을 위해 사용
+- **Docker**: 각 마이크로서비스를 컨테이너화하여 배포
+- **Kubernetes**: 컨테이너 오케스트레이션 도구로 사용
+- **MySQL/PostgreSQL**: 관계형 데이터베이스
+- **MongoDB**: 비정형 데이터 저장을 위한 NoSQL 데이터베이스
+- **Kafka/RabbitMQ**: 이벤트 기반 메시징 시스템
+
+#### 추가 기능
+- **ElasticSearch**: 빠른 검색 기능 제공
+- **Redis**: 캐싱을 통해 성능 향상
+- **Prometheus/Grafana**: 모니터링 및 로깅
+
+### 개발 단계
+1. **프로젝트 초기 설정 및 기본 서비스 구현**
+2. **GraphQL 및 gRPC 통합**
+3. **각 서비스별 기능 구현 및 테스트**
+4. **도커라이제이션 및 쿠버네티스 설정**
+5. **모니터링 및 로깅 설정**
+6. **최적화 및 성능 테스트**
+7. **배포 및 운영**
