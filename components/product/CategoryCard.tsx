@@ -16,6 +16,7 @@ const CategoryCard = ({ category, onPress }: Props) => (
 
 const styles = StyleSheet.create({
   card: {
+    margin: 5,
     backgroundColor: "#fff",
     borderRadius: 10,
     padding: 15,
