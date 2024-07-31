@@ -13,7 +13,6 @@ type Product = {
 type Category = {
   id: number;
   name: string;
-  image: string;
 };
 type ProductReview = {
   id: number;

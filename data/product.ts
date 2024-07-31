@@ -1,4 +1,4 @@
-export const products = [
+export const mProducts = [
   {
     id: 1,
     name: "무선 이어폰",
@@ -360,39 +360,34 @@ export const products = [
     createdAt: "2024-06-28",
   },
 ];
-export const categories = [
+export const mCategories = [
+  { id: 0, name: "전체" },
   {
     id: 1,
     name: "전자제품",
-    image: "https://example.com/electronics.jpg",
   },
   {
     id: 2,
     name: "가전제품",
-    image: "https://example.com/appliances.jpg",
   },
   {
     id: 3,
     name: "의류",
-    image: "https://example.com/clothing.jpg",
   },
   {
     id: 4,
     name: "건강",
-    image: "https://example.com/health.jpg",
   },
   {
     id: 5,
     name: "운동",
-    image: "https://example.com/exercise.jpg",
   },
   {
     id: 6,
     name: "아웃도어",
-    image: "https://example.com/outdoor.jpg",
   },
 ];
-export const productReviews = [
+export const mProductReviews = [
   {
     id: 1,
     productId: 1,
