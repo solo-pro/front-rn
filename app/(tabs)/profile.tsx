@@ -1,11 +1,12 @@
+// src/screens/ProfileScreen.tsx
 import React, { useState } from "react";
 import { View, Text, TextInput, Image, Button, StyleSheet, TouchableOpacity, SafeAreaView } from "react-native";
 
 const ProfileScreen = () => {
-  const [name, setName] = useState("John Doe");
-  const [email, setEmail] = useState("john.doe@example.com");
-  const [password, setPassword] = useState("");
-  const [profileImage, setProfileImage] = useState("https://via.placeholder.com/150");
+  const [name, setName] = useState<string>("John Doe");
+  const [email, setEmail] = useState<string>("john.doe@example.com");
+  const [password, setPassword] = useState<string>("");
+  const [profileImage, setProfileImage] = useState<string>("https://via.placeholder.com/150");
 
   const handleSave = () => {
     // Save the updated profile information
