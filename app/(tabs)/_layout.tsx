@@ -5,7 +5,7 @@ import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
-export default function TabLayout() {
+export default function TabLayout({ navigation }: { navigation: any }) {
   const colorScheme = useColorScheme();
 
   return (
@@ -36,6 +36,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => <TabBarIcon name={focused ? "search" : "search-outline"} color={color} />,
         }}
       />
+
       <Tabs.Screen
         name="cart"
         options={{
