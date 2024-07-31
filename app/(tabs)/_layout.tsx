@@ -4,10 +4,16 @@ import React from "react";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { useAuth } from "@/hooks/context/AuthContext";
+import LoginScreen from "../auth/login";
 
 export default function TabLayout({ navigation }: { navigation: any }) {
   const colorScheme = useColorScheme();
+  const { isLoggedIn } = useAuth();
 
+  if (!isLoggedIn) {
+    return <LoginScreen />;
+  }
   return (
     <Tabs
       screenOptions={{
