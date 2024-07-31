@@ -1,3 +1,4 @@
+
 import { StyleSheet, View, Text, FlatList, SafeAreaView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import ProductCard from '@/components/product/ProductCard'
@@ -24,6 +25,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
   const renderProduct = ({ item }: { item: Product }) => <ProductCard product={item} onPress={() => navigation.navigate('ProductDetail', { productId: item.id })} />
 
   const renderCategory = ({ item }: { item: Category }) => <CategoryCard category={item} onPress={() => navigation.navigate('Category', { categoryId: item.id })} />
+
 
   return (
     <SafeAreaView style={styles.container}>

@@ -5,10 +5,9 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 
-export default function HomeScreen({ navigation, route }: any) {
+export default function HomeScreen() {
   return (
     <ParallaxScrollView headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }} headerImage={<Image source={require("@/assets/images/partial-react-logo.png")} style={styles.reactLogo} />}>
-      <Button title="Click me" onPress={() => navigation.goBack()} />
       <ThemedView style={styles.titleContainer}>
         <TextInput style={{ width: 200, borderWidth: 1, color: "#1D3D47" }} />
         <ThemedText type="title">Welcome!</ThemedText>
