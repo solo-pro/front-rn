@@ -9,9 +9,11 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
 
+
   useEffect(() => {
     const loadProducts = async () => {
       // const fetchedProducts = await fetchProducts();
+
       const fetchedProducts = mProducts;
       const fetchedCategories = mCategories;
       setProducts(fetchedProducts);
@@ -50,6 +52,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
+
     margin: 10,
   },
   productList: {
@@ -63,4 +66,4 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-around",
   },
-});
+})
