@@ -23,13 +23,6 @@ export default function TabLayout({ navigation }: { navigation: any }) {
         }}
       />
       <Tabs.Screen
-        name="categories"
-        options={{
-          title: "Categories",
-          tabBarIcon: ({ color, focused }) => <TabBarIcon name={focused ? "grid" : "grid-outline"} color={color} />,
-        }}
-      />
-      <Tabs.Screen
         name="search"
         options={{
           title: "Search",
