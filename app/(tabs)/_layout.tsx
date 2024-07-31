@@ -36,6 +36,7 @@ export default function TabLayout({ navigation }: { navigation: any }) {
           tabBarIcon: ({ color, focused }) => <TabBarIcon name={focused ? "search" : "search-outline"} color={color} />,
         }}
       />
+
       <Tabs.Screen
         name="cart"
         options={{
