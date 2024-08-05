@@ -4,10 +4,14 @@ import ProductCard from "@/components/product/ProductCard";
 import { mCategories, mProducts } from "@/data/product";
 import { Category, Product } from "@/types/product";
 import CategoryCard from "@/components/product/CategoryCard";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Link, useLocalSearchParams } from "expo-router";
+
 
 export default function HomeScreen({ navigation }: { navigation: any }) {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+  const { slug } = useLocalSearchParams();
 
 
   useEffect(() => {
@@ -28,8 +32,9 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
   const renderCategory = ({ item }: { item: Category }) => <CategoryCard category={item} onPress={() => navigation.navigate("Category", { categoryId: item.id })} />;
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View>
       <Text style={styles.title}>추천 상품</Text>
+
       <FlatList
         data={categories}
         renderItem={renderCategory}
@@ -39,7 +44,9 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
         contentContainerStyle={styles.categoryList}
       />
       <FlatList data={products} columnWrapperStyle={styles.row} renderItem={renderProduct} keyExtractor={(item) => item.id.toString()} numColumns={2} contentContainerStyle={styles.productList} />
-    </SafeAreaView>
+
+    </View>
+
   );
 }
 
@@ -66,4 +73,4 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-around",
   },
-})
+});
