@@ -1,48 +1,67 @@
 // src/screens/LoginScreen.tsx
-import React, { useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, Modal, Alert, TouchableOpacity, ActivityIndicator } from "react-native";
 import { useAuth } from "@/hooks/context/AuthContext";
-import { useLinkTo } from "@react-navigation/native";
+import WebView, { WebViewNavigation } from "react-native-webview";
+import { useNavigation, useRouter } from "expo-router";
+import { serverUrl } from "@/api";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginScreen = () => {
   const { login } = useAuth();
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const linkTo = useLinkTo();
+  const linkTo = useRouter();
   const handleLogin = () => {
-    // 실제 로그인 로직 추가 (예: API 호출)
-    login();
-    linkTo("/");
+    linkTo.push("/");
   };
 
+  const handleWebViewNavigationStateChange = (newNavState: WebViewNavigation) => {
+    const { url } = newNavState;
+    if (url.startsWith(`${serverUrl}/success`)) {
+      const [_, token] = url.split("=");
+      if (!token) return;
+      AsyncStorage.setItem("accessToken", token);
+      login();
+    }
+  };
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={setEmail} keyboardType="email-address" />
-      <TextInput style={styles.input} placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry />
-      <Button title="Login" onPress={handleLogin} />
-    </View>
+    // <View style={styles.container}>
+    <WebView
+      source={{ uri: `${serverUrl}/login` }}
+      onNavigationStateChange={handleWebViewNavigationStateChange}
+      startInLoadingState
+      renderLoading={() => <ActivityIndicator size="large" color="#0000ff" />}
+    />
+    // </View>
+
   );
 };
 
 const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
   container: {
     flex: 1,
     justifyContent: "center",
     padding: 20,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
-    textAlign: "center",
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 10,
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
 });
 
