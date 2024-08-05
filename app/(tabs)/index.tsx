@@ -7,10 +7,12 @@ import CategoryCard from "@/components/product/CategoryCard";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Link, useLocalSearchParams } from "expo-router";
 
+
 export default function HomeScreen({ navigation }: { navigation: any }) {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const { slug } = useLocalSearchParams();
+
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -42,7 +44,9 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
         contentContainerStyle={styles.categoryList}
       />
       <FlatList data={products} columnWrapperStyle={styles.row} renderItem={renderProduct} keyExtractor={(item) => item.id.toString()} numColumns={2} contentContainerStyle={styles.productList} />
+
     </View>
+
   );
 }
 

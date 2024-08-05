@@ -1,4 +1,5 @@
 // src/screens/LoginScreen.tsx
+
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Modal, Alert, TouchableOpacity, ActivityIndicator } from "react-native";
 import { useAuth } from "@/hooks/context/AuthContext";
@@ -42,11 +43,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 22,
   },
+
   container: {
     flex: 1,
     justifyContent: "center",
     padding: 20,
   },
+
   modalView: {
     margin: 20,
     backgroundColor: "white",
@@ -61,6 +64,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+
   },
 });
 
