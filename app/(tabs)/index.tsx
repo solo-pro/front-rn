@@ -44,7 +44,6 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
         contentContainerStyle={styles.categoryList}
       />
       <FlatList data={products} columnWrapperStyle={styles.row} renderItem={renderProduct} keyExtractor={(item) => item.id.toString()} numColumns={2} contentContainerStyle={styles.productList} />
-
     </View>
 
   );
